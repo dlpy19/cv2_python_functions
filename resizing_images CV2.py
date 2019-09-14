@@ -3,27 +3,20 @@
 
 # # resizing image in aspect to ratio
 
-# In[44]:
-
-
-from PIL import Image
-import cv2
-img = cv2.imread("mie.jpg")
-import matplotlib.pyplot as plt
-
-
-# In[43]:
-
-
-factor = 55
-width = int(img.shape[1]*factor/100)
-height = int(img.shape[0]*factor/100)
-dim = (width,height)
-resized_im = cv2.resize(img,dim)
-cv2.imwrite("res_img.png",resized_im)
-
-
-# In[243]:
+# to resize an image with respect to ratio in open-cv you need the following:
+#  1. factor which is integer which indicate how much the new size woill be different 
+# from the original size.
+#  For exammple 50 means new size will 50% less than original whearas  200 meabs twice
+#   2. width * factor 
+#   3. height * factor
+#   4. dimintion which is (width,height)
+#   5. resized_im = cv2.resize(img,dim)
+#factor = 55 # any integer 
+#width = int(img.shape[1]*factor/100)
+#height = int(img.shape[0]*factor/100)
+#dim = (width,height)
+#resized_im = cv2.resize(img,dim)
+#cv2.imwrite("res_img.png",resized_im)
 
 
 def res_img(path=str,thresh=int):
@@ -38,48 +31,4 @@ def res_img(path=str,thresh=int):
         return cv2.imwrite("saved.jpg", output)
     return output
     
-    
-
-
-# In[242]:
-
-
-type(imag)
-
-
-# In[216]:
-
-
-img = cv2.imread(path)
-img.shape
-
-
-# In[251]:
-
-
-imag.shape
-
-
-# In[275]:
-
-
-im = res_img(path,35)
-
-
-# In[276]:
-
-
-im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
-
-
-# In[277]:
-
-
-ims = Image.fromarray(im)
-
-
-# In[278]:
-
-
-ims
 
